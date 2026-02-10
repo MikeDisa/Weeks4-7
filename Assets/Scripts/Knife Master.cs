@@ -19,9 +19,14 @@ public class Knife : MonoBehaviour
         //{
 
         //}
+        //clicker code is in week 4
         if(loser == true)
         {
             Piratepopup.PiratePop();
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }
