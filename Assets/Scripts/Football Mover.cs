@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,15 +6,13 @@ public class FootballMover: MonoBehaviour
 {
     public Slider PowerSlider;
 
+    public float t = 1;
 
-    public float maxDistance = 30f;
-    public float maxHeight = 8f;
-    public float duration = 1f;
-
+    
      Vector2 startPos;
      Vector2 endPos;
-     float time;
-     bool isKicking = false;
+     
+     public bool isKicking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +23,11 @@ public class FootballMover: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        t = Time.deltaTime;
+       if (isKicking)
+        {
+            Kick();
+        }
     }
 
     
@@ -34,14 +37,16 @@ public class FootballMover: MonoBehaviour
     {
         startPos = transform.position;
 
-        float power = PowerSlider.value; 
 
-        float distance = power * maxDistance;
+        Vector2 pos = Vector2.Lerp(startPos, endPos, t);
 
         
-        //endPos = ;
+        float arc = 4 * 5 * t * (1 - t);
+        pos.y += arc;
 
-        time = 0f;
+        transform.position = pos;
+
+       
         isKicking = true;
     }
 }
