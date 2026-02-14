@@ -6,6 +6,8 @@ public class FootballMover: MonoBehaviour
 {
     public Slider PowerSlider;
 
+    public float power;
+
     public float t = 1;
 
     
@@ -17,15 +19,19 @@ public class FootballMover: MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        t = 0f;
+        startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        t = Time.deltaTime;
+        power = PowerSlider.value;
+        endPos = startPos + new Vector2(power, 0f);
+        
        if (isKicking)
         {
+            t += Time.deltaTime;
             Kick();
         }
     }
@@ -35,8 +41,13 @@ public class FootballMover: MonoBehaviour
     
     public void Kick()
     {
-        startPos = transform.position;
+        if (t >= 1f)
+        {
+            t = 1f;
+            isKicking = false;
+        }
 
+        
 
         Vector2 pos = Vector2.Lerp(startPos, endPos, t);
 
@@ -47,6 +58,5 @@ public class FootballMover: MonoBehaviour
         transform.position = pos;
 
        
-        isKicking = true;
     }
 }
