@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PowerSlider: {fileID: 1631869264}
+  power: 3
   t: 1
   isKicking: 0
 --- !u!1 &838946158

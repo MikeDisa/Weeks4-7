@@ -26,14 +26,22 @@ public class FootballMover: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        power = PowerSlider.value;
-        endPos = startPos + new Vector2(power, 0f);
-        
-       if (isKicking)
+        if (!isKicking) return;
+
+        t += Time.deltaTime;
+
+        if (t >= 1f)
         {
-            t += Time.deltaTime;
-            Kick();
+            t = 1f;
+            isKicking = false;
         }
+
+        Vector2 pos = Vector2.Lerp(startPos, endPos, t);
+
+        float arc = 4 * 5 * t * (1 - t);
+        pos.y += arc;
+
+        transform.position = pos;
     }
 
     
@@ -41,22 +49,14 @@ public class FootballMover: MonoBehaviour
     
     public void Kick()
     {
-        if (t >= 1f)
-        {
-            t = 1f;
-            isKicking = false;
-        }
+        startPos = transform.position;
 
         
+        endPos = startPos + new Vector2(5f, 0f);
 
-        Vector2 pos = Vector2.Lerp(startPos, endPos, t);
+        t = 0f;
+        isKicking = true;
 
-        
-        float arc = 4 * 5 * t * (1 - t);
-        pos.y += arc;
 
-        transform.position = pos;
-
-       
     }
 }
