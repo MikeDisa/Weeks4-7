@@ -51,8 +51,9 @@ public class FootballMover: MonoBehaviour
     {
         startPos = transform.position;
 
-        
-        endPos = startPos + new Vector2(5f, 0f);
+        float power = PowerSlider.value;
+
+        endPos = startPos + new Vector2(power, 0f);
 
         t = 0f;
         isKicking = true;
