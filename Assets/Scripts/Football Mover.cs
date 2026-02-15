@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class FootballMover: MonoBehaviour
 {
     public Slider PowerSlider;
+    public MasterCoach MasterCoach;
 
     public float power;
 
@@ -51,7 +52,7 @@ public class FootballMover: MonoBehaviour
     {
         startPos = transform.position;
 
-        float power = PowerSlider.value;
+        float power = MasterCoach.PowerSlider.value;
 
         endPos = startPos + new Vector2(power, 0f);
 

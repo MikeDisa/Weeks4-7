@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FootballPrefab: {fileID: 766774682}
+  PowerSlider: {fileID: 1631869264}
 --- !u!1 &467886104
 GameObject:
   m_ObjectHideFlags: 0
