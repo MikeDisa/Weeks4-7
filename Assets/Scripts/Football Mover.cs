@@ -7,6 +7,8 @@ public class FootballMover: MonoBehaviour
     public Slider PowerSlider;
     public MasterCoach MasterCoach;
 
+    public Button LaunchButton;
+
     public float power;
 
     public float t = 1;

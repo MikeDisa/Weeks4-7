@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FootballPrefab: {fileID: 766774682}
   PowerSlider: {fileID: 1631869264}
+  LaunchButton: {fileID: 1641684775}
 --- !u!1 &467886104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,9 +1210,17 @@ PrefabInstance:
       value: Football
       objectReference: {fileID: 0}
     - target: {fileID: 7650623615241892700, guid: 945e448a005698843b19703bce0d2775, type: 3}
+      propertyPath: MasterCoach
+      value: 
+      objectReference: {fileID: 217991083}
+    - target: {fileID: 7650623615241892700, guid: 945e448a005698843b19703bce0d2775, type: 3}
       propertyPath: PowerSlider
       value: 
       objectReference: {fileID: 1631869264}
+    - target: {fileID: 7650623615241892700, guid: 945e448a005698843b19703bce0d2775, type: 3}
+      propertyPath: LaunchButton
+      value: 
+      objectReference: {fileID: 1641684775}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

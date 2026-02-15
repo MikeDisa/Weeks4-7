@@ -6,10 +6,11 @@ public class MasterCoach : MonoBehaviour
     public GameObject FootballPrefab;
 
     public Slider PowerSlider;
+
+    public Button LaunchButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(FootballPrefab);
         Football();
     }
 
@@ -27,8 +28,12 @@ public class MasterCoach : MonoBehaviour
         football.GetComponent<FootballMover>();
         football.GetComponent<FootballSpinner>();
 
+        mover.MasterCoach = this;
+
         mover.PowerSlider = PowerSlider;
 
+        LaunchButton.onClick.RemoveAllListeners();   
+        LaunchButton.onClick.AddListener(mover.Kick);
 
     }
 }
