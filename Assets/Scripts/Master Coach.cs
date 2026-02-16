@@ -9,6 +9,10 @@ public class MasterCoach : MonoBehaviour
     public Slider PowerSlider;
 
     public Button LaunchButton;
+
+    float t = 0;
+    float delay = 0.5f;
+    bool reset = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +22,17 @@ public class MasterCoach : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (reset && t<=delay)
+        {
+            t += Time.deltaTime;
+        }
+        if (!reset && t >= delay)
+        {
+            t = 0;
+            Football();
+        }
     }
-    void Football()
+    public void Football()
     {
         GameObject football = Instantiate(FootballPrefab);
 
@@ -38,8 +50,18 @@ public class MasterCoach : MonoBehaviour
 
     }
 
+    public void Reset()
+    {
+        if (!reset)
+        {
+            reset = true;
+        }
+    }
+
     public void ToggleCanvas()
     {
+        //apperently there's a one line toggle function for game object active states
+        //it's the true/false equivalent of multiplying by -1 
         targetCanvas.SetActive(!targetCanvas.activeSelf);
     }
 }

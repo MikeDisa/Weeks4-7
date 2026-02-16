@@ -35,8 +35,12 @@ public class FootballMover: MonoBehaviour
 
         if (t >= 1f)
         {
-            t = 1f;
+            t = 0f;
             isKicking = false;
+
+            MasterCoach.Reset();
+
+            Destroy(gameObject);
         }
 
         Vector2 pos = Vector2.Lerp(startPos, endPos, t);
