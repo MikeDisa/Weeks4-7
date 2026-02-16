@@ -1,4 +1,4 @@
-using System.Net;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +11,7 @@ public class FootballMover: MonoBehaviour
 
     public float power;
 
-    public float t = 1;
+    public float t = 0;
 
     
      Vector2 startPos;
@@ -38,7 +38,11 @@ public class FootballMover: MonoBehaviour
             t = 0f;
             isKicking = false;
 
-            MasterCoach.Reset();
+            if (MasterCoach != null)
+            {
+                MasterCoach.Reset();
+            }
+       
 
             Destroy(gameObject);
         }

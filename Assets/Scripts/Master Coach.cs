@@ -6,6 +6,8 @@ public class MasterCoach : MonoBehaviour
     public GameObject FootballPrefab;
     public GameObject targetCanvas;
 
+    //FootballMover currentMover;
+
     public Slider PowerSlider;
 
     public Button LaunchButton;
@@ -16,36 +18,43 @@ public class MasterCoach : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
         Football();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (reset && t<=delay)
+        if (!reset) return;
+
+        t += Time.deltaTime;
+
+        if (t >= delay)
         {
-            t += Time.deltaTime;
-        }
-        if (!reset && t >= delay)
-        {
-            t = 0;
+            t = 0f;
+            reset = false;
             Football();
         }
     }
     public void Football()
     {
+        Debug.Log("SPAWN Football() called");
+
         GameObject football = Instantiate(FootballPrefab);
 
+        //currentMover = football.GetComponent<FootballMover>();
+
+        
         FootballMover mover = football.GetComponent<FootballMover>();
 
         football.GetComponent<FootballMover>();
         football.GetComponent<FootballSpinner>();
-
         mover.MasterCoach = this;
 
         mover.PowerSlider = PowerSlider;
 
-        LaunchButton.onClick.RemoveAllListeners();   
+
+        LaunchButton.onClick.RemoveAllListeners();
         LaunchButton.onClick.AddListener(mover.Kick);
 
     }
@@ -57,6 +66,8 @@ public class MasterCoach : MonoBehaviour
             reset = true;
         }
     }
+
+ 
 
     public void ToggleCanvas()
     {
