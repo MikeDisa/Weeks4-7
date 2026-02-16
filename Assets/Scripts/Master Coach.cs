@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class MasterCoach : MonoBehaviour
 {
     public GameObject FootballPrefab;
+    public GameObject targetCanvas;
 
     public Slider PowerSlider;
 
@@ -35,5 +36,10 @@ public class MasterCoach : MonoBehaviour
         LaunchButton.onClick.RemoveAllListeners();   
         LaunchButton.onClick.AddListener(mover.Kick);
 
+    }
+
+    public void ToggleCanvas()
+    {
+        targetCanvas.SetActive(!targetCanvas.activeSelf);
     }
 }
