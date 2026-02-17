@@ -6,7 +6,7 @@ public class MasterCoach : MonoBehaviour
     public GameObject FootballPrefab;
     public GameObject targetCanvas;
 
-    //FootballMover currentMover;
+    public GoalZone goalZone;
 
     public Slider PowerSlider;
 
@@ -42,9 +42,12 @@ public class MasterCoach : MonoBehaviour
 
         GameObject football = Instantiate(FootballPrefab);
 
-        //currentMover = football.GetComponent<FootballMover>();
+        if (goalZone != null) 
+        { 
+            goalZone.football = football.transform;
+        }
 
-        
+
         FootballMover mover = football.GetComponent<FootballMover>();
 
         football.GetComponent<FootballMover>();
